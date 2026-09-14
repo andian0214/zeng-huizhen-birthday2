@@ -39,6 +39,72 @@ canvas{position:fixed;inset:0;z-index:5;pointer-events:none}
 .music{position:fixed;z-index:20;right:20px;top:calc(20px + env(safe-area-inset-top));width:42px;height:42px;border:1px solid rgba(230,190,90,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;animation:spin 4s linear infinite}.music.paused{animation-play-state:paused;opacity:.5}@keyframes spin{to{transform:rotate(360deg)}}
 .num{position:fixed;z-index:20;bottom:20px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:4px;color:rgba(230,200,120,.55)}
 .tip{position:absolute;bottom:7%;font-size:11px;letter-spacing:5px;color:rgba(230,200,120,.65);animation:up 1.7s infinite}@keyframes up{50%{transform:translateY(-8px);opacity:.4}}
+
+/* ===== 手机端布局优化：避免标题与正文重叠 ===== */
+.page{
+  justify-content:flex-start;
+  padding-top:clamp(125px,18vh,165px);
+  padding-bottom:60px;
+}
+
+.title{
+  top:clamp(42px,7vh,72px);
+  z-index:2;
+}
+
+.textbox,
+.info,
+.final{
+  margin-top:0;
+  flex-shrink:1;
+}
+
+.tip{
+  bottom:max(18px, env(safe-area-inset-bottom));
+}
+
+/* 岁月如歌页面 */
+.textbox{
+  max-height:calc(100vh - 180px);
+  overflow:auto;
+}
+
+/* 诚挚邀请页面 */
+.final{
+  max-height:calc(100vh - 155px);
+  overflow:auto;
+}
+
+/* 小屏手机进一步压缩排版 */
+@media (max-height: 760px){
+  .page{padding-top:110px;padding-bottom:42px;}
+  .title{top:35px;font-size:23px;}
+  .title:after{margin:10px auto;}
+  .textbox{padding:28px 22px;}
+  .big{font-size:28px;margin-bottom:20px;}
+  .copy{font-size:14px;line-height:1.85;}
+  .info{padding:28px 20px;}
+  .final{padding:24px 16px;}
+  .final-name{font-size:26px;margin:10px 0;}
+  .invitees{margin-top:18px;line-height:1.9;}
+  .small{line-height:2;}
+  .date{font-size:23px;}
+}
+
+@media (max-height: 650px){
+  .page{padding-top:88px;padding-bottom:30px;}
+  .title{top:22px;font-size:21px;}
+  .textbox{padding:20px 18px;}
+  .big{font-size:24px;margin-bottom:14px;}
+  .copy{font-size:13px;line-height:1.65;}
+  .final{padding:16px 14px;}
+  .final-name{font-size:23px;}
+  .age{font-size:16px;}
+  .invitees{font-size:13px;margin-top:12px;}
+  .small{font-size:12px;line-height:1.7;}
+  .date{font-size:20px;}
+}
+
 </style>
 </head>
 <body>
