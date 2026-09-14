@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>曾惠珍女士六十寿宴邀请函</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden;background:#100606;color:#f4d98c;font-family:"Microsoft YaHei","PingFang SC",serif}
+#app{width:100%;height:100%;position:relative;overflow:hidden;background:
+radial-gradient(circle at 50% 30%,rgba(124,28,20,.62),transparent 40%),
+linear-gradient(135deg,#080505,#310909 50%,#090505)}
+canvas{position:fixed;inset:0;z-index:5;pointer-events:none}
+.page{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;opacity:0;transform:translateY(100%);transition:all .85s cubic-bezier(.77,0,.18,1);pointer-events:none}
+.page.active{opacity:1;transform:translateY(0);pointer-events:auto}
+.page.prev{opacity:0;transform:translateY(-100%)}
+.frame{position:absolute;inset:18px;border:1px solid rgba(220,177,70,.35)}
+.frame:before,.frame:after{content:"";position:absolute;width:55px;height:55px}
+.frame:before{top:-1px;left:-1px;border-left:3px solid #cfa44b;border-top:3px solid #cfa44b}
+.frame:after{right:-1px;bottom:-1px;border-right:3px solid #cfa44b;border-bottom:3px solid #cfa44b}
+.cloud{position:absolute;color:#e8bf63;opacity:.1;font-size:75px;white-space:nowrap;animation:float 12s ease-in-out infinite}
+.cloud.top{top:8%;left:-15%}.cloud.bottom{bottom:8%;right:-20%;animation-direction:reverse}
+@keyframes float{50%{transform:translateX(12%) translateY(-8px)}}
+.cover-kicker{position:absolute;top:15%;font-size:13px;letter-spacing:8px;color:#dec47f}
+.shou{font-family:"STKaiti","KaiTi",serif;font-size:min(58vw,280px);line-height:1;background:linear-gradient(135deg,#8c6118,#fff0a5 38%,#b57a18 65%,#ffe79b);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 30px rgba(237,194,72,.35));animation:glow 3.5s ease-in-out infinite}
+@keyframes glow{50%{transform:scale(1.04);filter:drop-shadow(0 0 48px rgba(255,207,77,.65))}}
+.cover-title{margin-top:20px;font-size:32px;letter-spacing:16px;padding-left:16px}.cover-name{margin-top:24px;font-size:15px;letter-spacing:5px;color:#d6bb77}
+.open{position:absolute;bottom:13%;padding:14px 30px;border:1px solid #d7ad51;border-radius:30px;letter-spacing:5px;font-size:13px;animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 28px rgba(233,185,70,.42)}}
+.title{position:absolute;top:11%;font-size:27px;letter-spacing:9px;padding-left:9px}.title:after{content:"";display:block;width:55px;height:1px;background:#c89c42;margin:15px auto}
+.textbox{width:84%;max-width:470px;text-align:center;padding:48px 28px;border-top:1px solid rgba(221,180,75,.7);border-bottom:1px solid rgba(221,180,75,.7);background:linear-gradient(90deg,rgba(140,50,20,.04),rgba(150,90,25,.14),rgba(140,50,20,.04))}
+.big{font-size:34px;letter-spacing:9px;padding-left:9px;margin-bottom:34px}.copy{font-size:16px;line-height:2.25;letter-spacing:2px;color:#dfc995}
+.info{width:86%;max-width:480px;padding:42px 25px;text-align:center;border:1px solid rgba(221,180,75,.45);background:rgba(60,16,12,.38);box-shadow:0 20px 80px rgba(0,0,0,.4)}
+.label{font-size:13px;letter-spacing:7px;padding-left:7px;color:#c5a962;margin-bottom:18px}.date{font-size:27px;letter-spacing:2px}.time{margin-top:13px;font-size:20px;letter-spacing:5px}.line{width:60%;height:1px;background:linear-gradient(90deg,transparent,#d7aa4a,transparent);margin:35px auto}.hotel{font-size:25px;letter-spacing:3px;margin-bottom:18px}.addr{font-size:15px;line-height:2;color:#d5bf8c}
+.family{width:min(75vw,350px);height:min(75vw,350px);border-radius:50%;border:1px solid rgba(224,180,70,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(130,45,20,.35),transparent 68%);box-shadow:0 0 70px rgba(190,130,40,.1)}
+.jia{font-family:"STKaiti","KaiTi",serif;font-size:105px;background:linear-gradient(135deg,#916619,#ffe68e,#b67b17);-webkit-background-clip:text;color:transparent}.jia-title{font-size:20px;letter-spacing:8px;padding-left:8px}.family-copy{position:absolute;bottom:14%;text-align:center;font-size:15px;line-height:2.3;letter-spacing:3px;color:#dac58f}
+.final{width:86%;max-width:500px;text-align:center;padding:42px 18px;border-top:1px solid rgba(221,180,75,.7);border-bottom:1px solid rgba(221,180,75,.7)}.small{font-size:14px;letter-spacing:5px;line-height:2.5;color:#cbb37d}.final-name{font-size:31px;letter-spacing:6px;margin:18px 0}.age{font-size:19px;letter-spacing:5px;color:#e2c36f}.invitees{margin-top:34px;font-size:15px;line-height:2.2;letter-spacing:3px;color:#e2cb93}
+.music{position:fixed;z-index:20;right:20px;top:calc(20px + env(safe-area-inset-top));width:42px;height:42px;border:1px solid rgba(230,190,90,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;animation:spin 4s linear infinite}.music.paused{animation-play-state:paused;opacity:.5}@keyframes spin{to{transform:rotate(360deg)}}
+.num{position:fixed;z-index:20;bottom:20px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:4px;color:rgba(230,200,120,.55)}
+.tip{position:absolute;bottom:7%;font-size:11px;letter-spacing:5px;color:rgba(230,200,120,.65);animation:up 1.7s infinite}@keyframes up{50%{transform:translateY(-8px);opacity:.4}}
+</style>
+</head>
+<body>
+<div id="app"><canvas id="c"></canvas>
+<audio id="music" loop><source src="music.mp3" type="audio/mpeg"></audio>
+<div id="musicBtn" class="music paused">♪</div><div id="num" class="num">01 / 05</div>
+
+<section class="page active"><div class="frame"></div><div class="cloud top">☁　☁　☁</div><div class="cloud bottom">☁　☁　☁</div>
+<div class="cover-kicker">岁 月 沉 香 · 福 寿 绵 长</div><div class="shou">寿</div><div class="cover-title">寿 宴</div><div class="cover-name">曾惠珍女士 · 六十寿辰庆典</div><div id="open" class="open">敬 请 开 启</div></section>
+
+<section class="page"><div class="frame"></div><h2 class="title">岁月如歌</h2><div class="textbox"><div class="big">福寿绵长</div><div class="copy">六十载春秋，写满人生的故事<br>六十载岁月，沉淀幸福与温暖<br><br>感恩一路相伴<br>感谢亲朋好友的关爱与祝福<br><br>值此寿辰之际<br>诚邀您共聚一堂</div></div><div class="tip">↑ 向上滑动</div></section>
+
+<section class="page"><div class="frame"></div><h2 class="title">寿宴信息</h2><div class="info"><div class="label">寿 宴 时 间</div><div class="date">2026年10月4日</div><div class="time">恭候光临</div><div class="line"></div><div class="label">寿 宴 地 点</div><div class="hotel">新化县幸福之家酒店</div><div class="addr">诚邀亲朋好友欢聚一堂<br>共庆曾惠珍女士六十寿辰</div></div><div class="tip">↑ 向上滑动</div></section>
+
+<section class="page"><div class="frame"></div><h2 class="title">家宴团圆</h2><div class="family"><div class="jia">家</div><div class="jia-title">家和万事兴</div></div><div class="family-copy">一席家宴 · 满堂欢笑<br>一次相聚 · 一生情谊<br><br>愿岁月静好 · 福寿安康</div><div class="tip">↑ 向上滑动</div></section>
+
+<section class="page"><div class="frame"></div><h2 class="title">诚挚邀请</h2><div class="final"><div class="small">谨 定 于</div><div class="date">2026年10月4日</div><div class="small">在</div><div class="date">新化县幸福之家酒店</div><div class="small">举 行</div><div class="final-name">曾惠珍女士</div><div class="age">六十寿辰庆典</div><div class="invitees">敬备薄酒 · 恭候光临<br><br>晏育红夫妇<br>晏育良夫妇<br>敬邀</div></div></section>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.page')],num=document.getElementById('num');let cur=0,lock=false;
+function go(i){if(i<0||i>=pages.length||lock||i===cur)return;lock=true;pages.forEach((p,n)=>{p.classList.remove('active','prev');if(n<i)p.classList.add('prev')});pages[i].classList.add('active');cur=i;num.textContent=String(i+1).padStart(2,'0')+' / '+String(pages.length).padStart(2,'0');setTimeout(()=>lock=false,850)}
+let sy=0;addEventListener('touchstart',e=>sy=e.touches[0].clientY,{passive:true});addEventListener('touchend',e=>{let d=sy-e.changedTouches[0].clientY;if(Math.abs(d)>50)go(cur+(d>0?1:-1))},{passive:true});addEventListener('wheel',e=>go(cur+(e.deltaY>0?1:-1)),{passive:true});
+const m=document.getElementById('music'),mb=document.getElementById('musicBtn');function play(){m.play().then(()=>mb.classList.remove('paused')).catch(()=>{})}document.getElementById('open').onclick=()=>{go(1);play()};mb.onclick=()=>m.paused?play():(m.pause(),mb.classList.add('paused'));
+const c=document.getElementById('c'),x=c.getContext('2d');let ps=[];function resize(){c.width=innerWidth;c.height=innerHeight}resize();addEventListener('resize',resize);for(let i=0;i<65;i++)ps.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*2+.4,v:Math.random()*.35+.08,o:Math.random()*.6+.15,d:Math.random()*.3-.15});
+(function anim(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{x.beginPath();x.arc(p.x,p.y,p.s,0,Math.PI*2);x.fillStyle=`rgba(235,190,80,${p.o})`;x.fill();p.y-=p.v;p.x+=p.d;if(p.y<0){p.y=innerHeight;p.x=Math.random()*innerWidth}});requestAnimationFrame(anim)})();
+</script></body></html>
